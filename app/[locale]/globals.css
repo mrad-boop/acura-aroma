@@ -1,0 +1,77 @@
+@import "tailwindcss";
+
+:root {
+  --sage: #7a9e7e;
+  --sage-dark: #4a6b4e;
+  --sage-deep: #2d4a30;
+  --cream: #f7f3ec;
+  --sand: #e8dfc8;
+  --warm: #c9b89a;
+  --bark: #6b5740;
+  --mist: #eef3ee;
+  --gold: #b8963e;
+  --ivory: #faf8f4;
+  --text: #2c2416;
+  --text-soft: #6b5f4e;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--ivory);
+  color: var(--text);
+}
+
+.font-serif { font-family: var(--font-serif), Georgia, serif; }
+.font-sans  { font-family: var(--font-sans), sans-serif; }
+
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--cream); }
+::-webkit-scrollbar-thumb { background: var(--sage); border-radius: 3px; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-20px); }
+}
+@keyframes marquee {
+  to { transform: translateX(-50%); }
+}
+@keyframes spin-slow {
+  to { transform: rotate(360deg); }
+}
+
+.animate-fade-up { animation: fadeUp 0.7s ease both; }
+.animate-float   { animation: float 6s ease-in-out infinite; }
+.animate-marquee { animation: marquee 22s linear infinite; }
+.animate-spin-slow { animation: spin-slow 30s linear infinite; }
+
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+.delay-500 { animation-delay: 0.5s; }
+
+.bg-ivory     { background-color: var(--ivory); }
+.bg-cream     { background-color: var(--cream); }
+.bg-mist      { background-color: var(--mist); }
+.bg-sage      { background-color: var(--sage); }
+.bg-sage-dark { background-color: var(--sage-dark); }
+.bg-sage-deep { background-color: var(--sage-deep); }
+.bg-gold      { background-color: var(--gold); }
+.bg-bark      { background-color: var(--bark); }
+
+.text-sage      { color: var(--sage); }
+.text-sage-dark { color: var(--sage-dark); }
+.text-sage-deep { color: var(--sage-deep); }
+.text-gold      { color: var(--gold); }
+.text-bark      { color: var(--bark); }
+.text-soft      { color: var(--text-soft); }
+.text-main      { color: var(--text); }
+
+.border-sage { border-color: var(--sage); }
+.border-sage-deep { border-color: var(--sage-deep); }
+.border-gold { border-color: var(--gold); }
