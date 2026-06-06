@@ -1,3 +1,6 @@
+export const dynamic = 'force-dynamic'
+export const dynamicParams = true
+
 import { getLocale } from 'next-intl/server'
 import { supabase, TABLES } from '@/lib/supabase'
 import { notFound } from 'next/navigation'
@@ -25,12 +28,4 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
     .limit(3)
 
   return <ProductDetailClient locale={locale} product={product} related={related || []} />
-}
-
-export async function generateStaticParams() {
-  const { data } = await supabase
-    .from(TABLES.products)
-    .select('slug')
-    .eq('active', true)
-  return (data || []).map(p => ({ slug: p.slug }))
 }

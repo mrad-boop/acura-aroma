@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 import { getLocale } from 'next-intl/server'
 import { supabase, TABLES } from '@/lib/supabase'
 import HomeClient from './HomeClient'
