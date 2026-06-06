@@ -5,6 +5,7 @@ const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
 
 export const supabase = createClient(supabaseUrl, supabaseAnonKey)
 
+// ─── Types ───────────────────────────────────────────────
 export type Category = {
   id: number
   name_fr: string
@@ -52,6 +53,7 @@ export type Quote = {
   quantity?: string
   message?: string
   status?: string
+  locale?: string
   created_at?: string
 }
 
@@ -69,3 +71,11 @@ export type BlogPost = {
   category: string
   published_at: string
 }
+
+// ─── Table names with aa_ prefix ─────────────────────────
+export const TABLES = {
+  categories: 'aa_categories',
+  products:   'aa_products',
+  quotes:     'aa_quotes',
+  blog:       'aa_blog_posts',
+} as const

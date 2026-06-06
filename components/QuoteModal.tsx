@@ -37,7 +37,7 @@ export default function QuoteModal({ isOpen, onClose, prefilledProduct }: Props)
     if (!form.first_name || !form.email) return alert(t('required'))
     setLoading(true)
     try {
-      await supabase.from('quotes').insert([{
+      await supabase.from('aa_quotes').insert([{
         first_name: form.first_name, last_name: form.last_name,
         email: form.email, phone: form.phone, country: form.country,
         type_client: form.type_client, product_name: form.product_name,

@@ -1,15 +1,15 @@
-import { supabase } from '@/lib/supabase'
+import { getLocale } from 'next-intl/server'
+import { supabase, TABLES } from '@/lib/supabase'
 import { notFound } from 'next/navigation'
 import ProductDetailClient from './ProductDetailClient'
-import { getLocale } from 'next-intl/server'
 
 export default async function ProductDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
   const locale = await getLocale()
 
   const { data: product } = await supabase
-    .from('products')
-    .select('*, category:categories(*)')
+    .from(TABLES.products)
+    .select(`*, category:${TABLES.categories}(*)`)
     .eq('slug', slug)
     .eq('active', true)
     .single()
@@ -17,7 +17,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
   if (!product) notFound()
 
   const { data: related } = await supabase
-    .from('products')
+    .from(TABLES.products)
     .select('*')
     .eq('active', true)
     .eq('type', product.type)
@@ -28,6 +28,9 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
 }
 
 export async function generateStaticParams() {
-  const { data } = await supabase.from('products').select('slug').eq('active', true)
+  const { data } = await supabase
+    .from(TABLES.products)
+    .select('slug')
+    .eq('active', true)
   return (data || []).map(p => ({ slug: p.slug }))
 }

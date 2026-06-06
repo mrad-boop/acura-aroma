@@ -19,7 +19,7 @@ export default function ContactPage() {
   const submit = async () => {
     if (!form.email || !form.message) return
     setLoading(true)
-    await supabase.from('quotes').insert([{ ...form, product_name: 'Contact général', status: 'new', locale }])
+    await supabase.from('aa_quotes').insert([{ ...form, product_name: 'Contact général', status: 'new', locale }])
     setLoading(false); setSubmitted(true)
   }
 

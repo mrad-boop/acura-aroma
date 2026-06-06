@@ -14,7 +14,7 @@ export default function AdminPage() {
 
   const loadQuotes = async () => {
     const { data } = await supabase
-      .from('quotes')
+      .from('aa_quotes')
       .select('*')
       .order('created_at', { ascending: false })
     setQuotes(data || [])
@@ -22,7 +22,7 @@ export default function AdminPage() {
   }
 
   const updateStatus = async (id: number, status: string) => {
-    await supabase.from('quotes').update({ status }).eq('id', id)
+    await supabase.from('aa_quotes').update({ status }).eq('id', id)
     loadQuotes()
   }
 
